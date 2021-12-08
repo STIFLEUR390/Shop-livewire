@@ -59,7 +59,7 @@ Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->group(function () 
     // categorie
     Route::get('/admin/categories', AdminCategoryComponent::class)->name('admin.categories');
     Route::get('/admin/category/add', AdminAddCategoryComponent::class)->name('admin.addcategory');
-    Route::get('/admin/category/edit/{category_slug}', AdminEditCategoryComponent::class)->name('admin.editcategory');
+    Route::get('/admin/category/edit/{category_slug}/{scategory_slug?}', AdminEditCategoryComponent::class)->name('admin.editcategory');
 
     // Produit
     Route::get('/admin/products', AdminProductComponent::class)->name('admin.products');

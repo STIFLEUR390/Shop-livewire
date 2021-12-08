@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\Admin;
 
-use App\Models\Category;
+use App\Models\{Category, Subcategory};
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -10,13 +10,18 @@ class AdminCategoryComponent extends Component
 {
     use WithPagination;
 
-    public $catehory_id;
+    public $category_id;
+    public $sub_category_id;
 
-    protected $listeners = ['confirmed' => 'confirmed', 'cancelled' => 'cancelled'];
+    protected $listeners = [
+        'confirmedCategorie' => 'confirmedCategorie', 
+        'cancelled' => 'cancelled',
+        'confirmedSubCategorie' => 'confirmedSubCategorie',
+    ];
 
     public function deleteCategory($id)
     {
-        $this->catehory_id = $id;
+        $this->category_id = $id;
         $category = Category::find($id);
         $message = "confirmer la suppression de la catégorie: ". $category->name;
         $this->confirm($message, [
@@ -25,7 +30,23 @@ class AdminCategoryComponent extends Component
             'showConfirmButton' => true,
             'cancelButtonText' => 'Annulé',
             'confirmButtonText' => 'Supprimer',
-            'onConfirmed' => 'confirmed',
+            'onConfirmed' => 'confirmedCategorie',
+            'onCancelled' => 'cancelled'
+        ]);
+    }
+
+    public function deleteSubCategory($id)
+    {
+        $this->sub_category_id = $id;
+        $sub_category = Subcategory::find($id);
+        $message = "confirmer la suppression de la sous catégorie: ". $sub_category->name;
+        $this->confirm($message, [
+            'toast' => false,
+            'position' => 'center',
+            'showConfirmButton' => true,
+            'cancelButtonText' => 'Annulé',
+            'confirmButtonText' => 'Supprimer',
+            'onConfirmed' => 'confirmedSubCategorie',
             'onCancelled' => 'cancelled'
         ]);
     }
@@ -36,9 +57,9 @@ class AdminCategoryComponent extends Component
         return view('livewire.admin.admin-category-component', compact('categories'))->layout('layouts.base');
     }
 
-    public function confirmed()
+    public function confirmedCategorie()
     {
-        $category = Category::find($this->catehory_id);
+        $category = Category::find($this->category_id);
         $category->delete();
         // session()->flash('message', 'La categorie a bien été suprimer');
         $this->alert('success', 'La categorie a bien été suprimer', [
@@ -66,5 +87,22 @@ class AdminCategoryComponent extends Component
             'showCancelButton' =>  false,
             'showConfirmButton' =>  false,
       ]);
+    }
+
+    public function confirmedSubCategorie()
+    {
+        $sub_category = Subcategory::find($this->sub_category_id);
+        $sub_category->delete();
+        // session()->flash('message', 'La categorie a bien été suprimer');
+        $this->alert('success', 'La sous categorie a bien été suprimer', [
+            'position' =>  'center',
+            'timer' =>  3000,
+            'toast' =>  false,
+            'text' =>  '',
+            'confirmButtonText' =>  'Ok',
+            'cancelButtonText' =>  'Cancel',
+            'showCancelButton' =>  false,
+            'showConfirmButton' =>  false,
+        ]);
     }
 }
