@@ -10,6 +10,15 @@
         width: 100%;
         border: 1px solid #e6e6e6;
     }
+
+
+    .spinner {
+        font-size: 22px;
+        margin-bottom: 20px;
+        padding-left: 37px;
+        color: green;
+        display: none;
+    }
 </style>
     <div class="container">
 
@@ -20,7 +29,7 @@
             </ul>
         </div>
         <div class=" main-content-area">
-            <form wire:submit.prevent='placeOrder' >
+            <form wire:submit.prevent='placeOrder' onsubmit="$('#processing').show();" >
                 <div class="row">
                     <div class="col-md-12">
                         <div class="wrap-address-billing">
@@ -200,6 +209,14 @@
                         @if (Session::has('checkout'))
                             <p class="summary-info grand-total"><span>Total</span> <span class="grand-total-price">{{ priceFormat(Session::get('checkout')['total']) }}</span></p>
                         @endif
+
+                        @if ($errors->isEmpty())
+                            <div wire:ignore id="processing" class="spinner">
+                                <i class="fa fa-spinner fa-pulse fa-fw" aria-hidden="true"></i>
+                                <span>Processing...</span>
+                            </div>
+                        @endif
+
                         <button type="submit" class="btn btn-medium">Faites votre commande maintenant</button>
                     </div>
                     <div class="summary-item shipping-method">
