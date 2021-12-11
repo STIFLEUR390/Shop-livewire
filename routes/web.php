@@ -2,7 +2,7 @@
 
 use App\Http\Livewire\{CartComponent, CategoryComponent, CheckoutComponent, ContactComponent, DetailComponent, HomeComponent, SearchComponent, ShopComponent, ThankyouComponent, WishlistComponent};
 use App\Http\Livewire\Admin\{AdminAddCategoryComponent, AdminAddCouponsComponent, AdminAddHomeSliderComponent, AdminAddProductComponent, AdminCategoryComponent, AdminContactComponent, AdminCouponsComponent, AdminDashboardComponent, AdminEditCategoryComponent, AdminEditCouponsComponent, AdminEditHomeSliderComponent, AdminEditProductComponent, AdminHomeCategoryComponent, AdminHomeSliderComponent, AdminOrderComponent, AdminOrderDetailsComponent, AdminProductComponent, AdminSaleComponent, AdminSettingComponent};
-use App\Http\Livewire\User\{UserChangePasswordComponent, UserDashboardComponent, UserOrderDetailsComponent, UserOrdersComponent, UserProfileComponent, UserReviewComponent};
+use App\Http\Livewire\User\{UserChangePasswordComponent, UserDashboardComponent, UserEditProfileComponent, UserOrderDetailsComponent, UserOrdersComponent, UserProfileComponent, UserReviewComponent};
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -51,6 +51,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/user/review/{order_item_id}', UserReviewComponent::class)->name('user.review');
     Route::get('/user/change-password', UserChangePasswordComponent::class)->name('user.changepassword');
     Route::get('/user/profile', UserProfileComponent::class)->name('user.profile');
+    Route::get('/user/profile/edit', UserEditProfileComponent::class)->name('user.editprofile');
 });
 
 #For Admin
