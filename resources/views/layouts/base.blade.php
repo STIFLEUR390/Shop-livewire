@@ -125,6 +125,9 @@
                                                         <a title="My orders" href="{{ route('user.orders') }}">My orders</a>
                                                     </li>
                                                     <li class="menu-item" >
+                                                        <a title="My Profile" href="{{ route('user.profile') }}">Mon Profile</a>
+                                                    </li>
+                                                    <li class="menu-item" >
                                                         <a title="Change password" href="{{ route('user.changepassword') }}">Changer mot de passe</a>
                                                     </li>
                                                     <form id="logout-form" action="{{ route('logout') }}" method="post">
