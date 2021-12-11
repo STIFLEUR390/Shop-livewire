@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\Admin;
 
-use App\Models\{Category, Product};
+use App\Models\{Category, Product, Subcategory};
 use Carbon\Carbon;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -25,6 +25,7 @@ class AdminAddProductComponent extends Component
     public $image;
     public $category_id;
     public $images;
+    public $sub_category_id;
 
     protected $rules = [
         'name' => 'required',
@@ -102,6 +103,9 @@ class AdminAddProductComponent extends Component
         }
 
         $product->category_id = $this->category_id;
+        if ($this->sub_category_id) {
+            $product->subcategory_id = $this->sub_category_id;
+        }
         $product->save();
 
         // session()->flash('message', 'Le produit a été avec succes');
@@ -117,9 +121,15 @@ class AdminAddProductComponent extends Component
         ]);
     }
 
+    public function changeSubcategory()
+    {
+        $this->sub_category_id = 0;
+    }
+
     public function render()
     {
         $categories = Category::all();
-        return view('livewire.admin.admin-add-product-component', compact('categories'))->layout('layouts.base');
+        $sub_categories = Subcategory::where('category_id', $this->category_id)->get();
+        return view('livewire.admin.admin-add-product-component', compact('categories', 'sub_categories'))->layout('layouts.base');
     }
 }

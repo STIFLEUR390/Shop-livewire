@@ -2,11 +2,12 @@
 
 namespace App\Http\Livewire\Admin;
 
-use App\Models\{Category, Product};
+use App\Models\{Category, Product, Subcategory};
 use Carbon\Carbon;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 
 class AdminEditProductComponent extends Component
 {
@@ -28,23 +29,28 @@ class AdminEditProductComponent extends Component
     public $product_id;
     public $images;
     public $newimages;
+    public $sub_category_id;
 
-    protected $rules = [
-        'name' => 'required',
-        'slug' => 'required|unique:products',
-        'short_description' => 'required',
-        'description' => 'required',
-        'regular_price' => 'required|numeric',
-        'sale_price' => 'nullable|numeric',
-        'SKU' => 'required',
-        'stock_status' => 'required',
-        'featured' => 'required',
-        'quantity' => 'required|numeric',
-        'newimage' => 'nullable|mimes:jpeg,png',
-        'category_id' => 'required',
-        'newimages' => 'nullable',
-        'newimages.*' => 'mimes:jpeg,jpg,png,gif',
-    ];
+
+    protected function rules()
+    {
+        return [
+            'name' => 'required',
+            'slug' => ['required', Rule::unique('products')->ignore(Product::find($this->product_id))],
+            'short_description' => 'required',
+            'description' => 'required',
+            'regular_price' => 'required|numeric',
+            'sale_price' => 'nullable|numeric',
+            'SKU' => 'required',
+            'stock_status' => 'required',
+            'featured' => 'required',
+            'quantity' => 'required|numeric',
+            'newimage' => 'nullable|mimes:jpeg,png',
+            'category_id' => 'required',
+            'newimages' => 'nullable',
+            'newimages.*' => 'mimes:jpeg,jpg,png,gif',
+        ];
+    }
 
     public function mount($product_slug)
     {
@@ -62,6 +68,7 @@ class AdminEditProductComponent extends Component
         $this->image = $product->image;
         $this->images= explode(',', $product->images);
         $this->category_id = $product->category_id;
+        $this->sub_category_id = $product->subcategory_id;
         $this->product_id = $product->id;
     }
 
@@ -115,6 +122,9 @@ class AdminEditProductComponent extends Component
             $product->images = $imagesname;
         }
         $product->category_id = $this->category_id;
+        if ($this->sub_category_id) {
+            $product->subcategory_id = $this->sub_category_id;
+        }
         $product->save();
 
         // session()->flash('message', 'Le produit a été mise a jour avec succes');
@@ -128,9 +138,15 @@ class AdminEditProductComponent extends Component
         ]);
     }
 
+    public function changeSubcategory()
+    {
+        $this->sub_category_id = 0;
+    }
+
     public function render()
     {
         $categories = Category::all();
-        return view('livewire.admin.admin-edit-product-component', compact('categories'))->layout('layouts.base');;
+        $sub_categories = Subcategory::where('category_id', $this->category_id)->get();
+        return view('livewire.admin.admin-edit-product-component', compact('categories', 'sub_categories'))->layout('layouts.base');
     }
 }
