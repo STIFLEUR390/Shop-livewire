@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\{Product, Sale, User};
+use App\Models\{Product, Sale};
 use Livewire\Component;
 use Cart;
 use Illuminate\Support\Facades\Auth;
@@ -43,7 +43,6 @@ class DetailComponent extends Component
         $popular_products = Product::inRandomOrder()->limit(4)->get();
         $releated_products = Product::where('category_id', $product->category_id)->inRandomOrder()->limit(5)->get();
         $sale = Sale::find(1);
-        $user = User::find(Auth::user()->id);
-        return view('livewire.detail-component', compact('user' ,'sale', 'product', 'popular_products', 'releated_products'))->layout('layouts.base');
+        return view('livewire.detail-component', compact('sale', 'product', 'popular_products', 'releated_products'))->layout('layouts.base');
     }
 }

@@ -62,8 +62,8 @@
                                                     <span class="caret"></span>
                                                 </button>
                                                 <ul class="dropdown-menu" aria-labelledby="dropdownmenu{{ $order->id }}">
-                                                    <li><a href="#" wire:click.prevent="updateOrderStatus({{$order->id}}, 'delivered')">livré</a></li>
-                                                    <li><a href="#" wire:click.prevent="updateOrderStatus({{$order->id}}, 'canceled')">annulé</a></li>
+                                                    <li><a href="javascript:void(0);" wire:click.prevent="updateOrderStatus({{$order->id}}, 'delivered')">livré</a></li>
+                                                    <li><a href="javascript:void(0);" wire:click.prevent="updateOrderStatus({{$order->id}}, 'canceled')">annulé</a></li>
                                                 </ul>
                                             </div>
                                         </td>

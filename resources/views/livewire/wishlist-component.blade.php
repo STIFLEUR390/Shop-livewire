@@ -48,10 +48,10 @@
                                 <div class="product-info">
                                     <a href="{{ route('product.details', $item->model->slug) }}" class="product-name"><span>{{ $item->model->name }}</span></a>
                                     <div class="wrap-price"><span class="product-price">{{ priceFormat($item->model->regular_price) }}</span></div>
-                                    {{-- <a href="#" class="btn add-to-cart" wire:click.prevent="store({{$product->id}}, {{ $product->name }}, {{ $product->regular_price }})">Add To Cart</a> --}}
-                                    <a href="#" class="btn add-to-cart" wire:click.prevent="moveproductFromWishlistToCart('{{$item->rowId}}')">Move To Cart</a>
+                                    {{-- <a href="javascript:void(0);" class="btn add-to-cart" wire:click.prevent="store({{$product->id}}, {{ $product->name }}, {{ $product->regular_price }})">Add To Cart</a> --}}
+                                    <a href="javascript:void(0);" class="btn add-to-cart" wire:click.prevent="moveproductFromWishlistToCart('{{$item->rowId}}')">Move To Cart</a>
                                     <div class="product-wish">
-                                        <a href="#" wire:click.prevent="removeFromWishlist({{$item->model->id}})"><i class="fa fa-heart fill-heart" aria-hidden="true"></i></a>
+                                        <a href="javascript:void(0);" wire:click.prevent="removeFromWishlist({{$item->model->id}})"><i class="fa fa-heart fill-heart" aria-hidden="true"></i></a>
                                     </div>
                                 </div>
                             </div>

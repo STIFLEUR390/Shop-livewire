@@ -16,7 +16,7 @@
                             <div class="col-md-6">
                                 <a href="{{ route('user.orders') }}" class="btn btn-success pull-right">My Orders</a>
                                 @if ($order->status == 'ordered')
-                                    <a href="#" wire:click.prevent="cancelOrder" class="btn btn-warning pull-right mr-1">Cancel Order</a>
+                                    <a href="javascript:void(0);" wire:click.prevent="cancelOrder" class="btn btn-warning pull-right mr-1">Cancel Order</a>
                                 @endif
                             </div>
                         </div>

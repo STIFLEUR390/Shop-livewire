@@ -27,7 +27,7 @@
 	<!-- mobile menu -->
     <div class="mercado-clone-wrap">
         <div class="mercado-panels-actions-wrap">
-            <a class="mercado-close-btn mercado-close-panels" href="#">x</a>
+            <a class="mercado-close-btn mercado-close-panels" href="javascript:void(0);">x</a>
         </div>
         <div class="mercado-panels"></div>
     </div>
@@ -41,32 +41,32 @@
 						<div class="topbar-menu left-menu">
 							<ul>
 								<li class="menu-item" >
-									<a title="Hotline: (+123) 456 789" href="#" ><span class="icon label-before fa fa-mobile"></span>Hotline: (+123) 456 789</a>
+									<a title="Hotline: (+123) 456 789" href="javascript:void(0);" ><span class="icon label-before fa fa-mobile"></span>Hotline: (+123) 456 789</a>
 								</li>
 							</ul>
 						</div>
 						<div class="topbar-menu right-menu">
 							<ul>
 								<li class="menu-item lang-menu menu-item-has-children parent">
-									<a title="English" href="#"><span class="img label-before"><img src="{{ asset('assets/images/lang-en.png') }}" alt="lang-en"></span>English<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+									<a title="English" href="javascript:void(0);"><span class="img label-before"><img src="{{ asset('assets/images/lang-en.png') }}" alt="lang-en"></span>English<i class="fa fa-angle-down" aria-hidden="true"></i></a>
 									<ul class="submenu lang" >
-										<li class="menu-item" ><a title="hungary" href="#"><span class="img label-before"><img src="{{ asset('assets/images/lang-hun.png') }}" alt="lang-hun"></span>Hungary</a></li>
-										<li class="menu-item" ><a title="german" href="#"><span class="img label-before"><img src="{{ asset('assets/images/lang-ger.png') }}" alt="lang-ger" ></span>German</a></li>
-										<li class="menu-item" ><a title="french" href="#"><span class="img label-before"><img src="{{ asset('assets/images/lang-fra.png') }}" alt="lang-fre"></span>French</a></li>
-										<li class="menu-item" ><a title="canada" href="#"><span class="img label-before"><img src="{{ asset('assets/images/lang-can.png') }}" alt="lang-can"></span>Canada</a></li>
+										<li class="menu-item" ><a title="hungary" href="javascript:void(0);"><span class="img label-before"><img src="{{ asset('assets/images/lang-hun.png') }}" alt="lang-hun"></span>Hungary</a></li>
+										<li class="menu-item" ><a title="german" href="javascript:void(0);"><span class="img label-before"><img src="{{ asset('assets/images/lang-ger.png') }}" alt="lang-ger" ></span>German</a></li>
+										<li class="menu-item" ><a title="french" href="javascript:void(0);"><span class="img label-before"><img src="{{ asset('assets/images/lang-fra.png') }}" alt="lang-fre"></span>French</a></li>
+										<li class="menu-item" ><a title="canada" href="javascript:void(0);"><span class="img label-before"><img src="{{ asset('assets/images/lang-can.png') }}" alt="lang-can"></span>Canada</a></li>
 									</ul>
 								</li>
 								<li class="menu-item menu-item-has-children parent" >
-									<a title="Dollar (USD)" href="#">Dollar (USD)<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+									<a title="Dollar (USD)" href="javascript:void(0);">Dollar (USD)<i class="fa fa-angle-down" aria-hidden="true"></i></a>
 									<ul class="submenu curency" >
 										<li class="menu-item" >
-											<a title="Pound (GBP)" href="#">Pound (GBP)</a>
+											<a title="Pound (GBP)" href="javascript:void(0);">Pound (GBP)</a>
 										</li>
 										<li class="menu-item" >
-											<a title="Euro (EUR)" href="#">Euro (EUR)</a>
+											<a title="Euro (EUR)" href="javascript:void(0);">Euro (EUR)</a>
 										</li>
 										<li class="menu-item" >
-											<a title="Dollar (USD)" href="#">Dollar (USD)</a>
+											<a title="Dollar (USD)" href="javascript:void(0);">Dollar (USD)</a>
 										</li>
 									</ul>
 								</li>
@@ -74,7 +74,7 @@
                                     @auth
                                         @if (Auth::user()->utype === 'ADM' )
                                             <li class="menu-item menu-item-has-children parent" >
-                                                <a title="My Account" href="#">Mon compte ({{ Auth::user()->name }})<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                                                <a title="My Account" href="javascript:void(0);">Mon compte ({{ Auth::user()->name }})<i class="fa fa-angle-down" aria-hidden="true"></i></a>
                                                 <ul class="submenu curency" >
                                                     <li class="menu-item" >
                                                         <a title="Dashboard" href="{{ route('admin.dashboard') }}">Dashboard</a>
@@ -116,7 +116,7 @@
                                             </li>
                                         @else
                                             <li class="menu-item menu-item-has-children parent" >
-                                                <a title="My Account" href="#">Mon compte ({{ Auth::user()->name }})<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                                                <a title="My Account" href="javascript:void(0);">Mon compte ({{ Auth::user()->name }})<i class="fa fa-angle-down" aria-hidden="true"></i></a>
                                                 <ul class="submenu curency" >
                                                     <li class="menu-item" >
                                                         <a title="Dashboard" href="{{ route('user.dashboard') }}">Dashboard</a>
@@ -164,7 +164,7 @@
 							@livewire('cart-count-component')
 
 							<div class="wrap-icon-section show-up-after-1024">
-								<a href="#" class="mobile-navigation">
+								<a href="javascript:void(0);" class="mobile-navigation">
 									<span></span>
 									<span></span>
 									<span></span>
@@ -179,11 +179,11 @@
 					<div class="header-nav-section">
 						<div class="container">
 							<ul class="nav menu-nav clone-main-menu" id="mercado_haead_menu" data-menuname="Sale Info" >
-								<li class="menu-item"><a href="#" class="link-term">Weekly Featured</a><span class="nav-label hot-label">hot</span></li>
-								<li class="menu-item"><a href="#" class="link-term">Hot Sale items</a><span class="nav-label hot-label">hot</span></li>
-								<li class="menu-item"><a href="#" class="link-term">Top new items</a><span class="nav-label hot-label">hot</span></li>
-								<li class="menu-item"><a href="#" class="link-term">Top Selling</a><span class="nav-label hot-label">hot</span></li>
-								<li class="menu-item"><a href="#" class="link-term">Top rated items</a><span class="nav-label hot-label">hot</span></li>
+								<li class="menu-item"><a href="javascript:void(0);" class="link-term">Weekly Featured</a><span class="nav-label hot-label">hot</span></li>
+								<li class="menu-item"><a href="javascript:void(0);" class="link-term">Hot Sale items</a><span class="nav-label hot-label">hot</span></li>
+								<li class="menu-item"><a href="javascript:void(0);" class="link-term">Top new items</a><span class="nav-label hot-label">hot</span></li>
+								<li class="menu-item"><a href="javascript:void(0);" class="link-term">Top Selling</a><span class="nav-label hot-label">hot</span></li>
+								<li class="menu-item"><a href="javascript:void(0);" class="link-term">Top rated items</a><span class="nav-label hot-label">hot</span></li>
 							</ul>
 						</div>
 					</div>

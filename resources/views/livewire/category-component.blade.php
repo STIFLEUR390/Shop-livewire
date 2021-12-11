@@ -69,8 +69,8 @@
                                     <div class="product-info">
                                         <a href="{{ route('product.details', $product->slug) }}" class="product-name"><span>{{ $product->name }}</span></a>
                                         <div class="wrap-price"><span class="product-price">{{ priceFormat($product->regular_price) }}</span></div>
-                                        {{-- <a href="#" class="btn add-to-cart" wire:click.prevent="store({{$product->id}}, {{ $product->name }}, {{ $product->regular_price }})">Add To Cart</a> --}}
-                                        <a href="#" class="btn add-to-cart" wire:click.prevent="store({{$product->id}}, '{{ $product->name }}', {{ $product->regular_price }})">Add To Cart</a>
+                                        {{-- <a href="javascript:void(0);" class="btn add-to-cart" wire:click.prevent="store({{$product->id}}, {{ $product->name }}, {{ $product->regular_price }})">Add To Cart</a> --}}
+                                        <a href="javascript:void(0);" class="btn add-to-cart" wire:click.prevent="store({{$product->id}}, '{{ $product->name }}', {{ $product->regular_price }})">Add To Cart</a>
                                     </div>
                                 </div>
                             </li>
@@ -83,9 +83,9 @@
                     {{ $products->links() }}
                     {{-- <ul class="page-numbers">
                         <li><span class="page-number-item current" >1</span></li>
-                        <li><a class="page-number-item" href="#" >2</a></li>
-                        <li><a class="page-number-item" href="#" >3</a></li>
-                        <li><a class="page-number-item next-link" href="#" >Next</a></li>
+                        <li><a class="page-number-item" href="javascript:void(0);" >2</a></li>
+                        <li><a class="page-number-item" href="javascript:void(0);" >3</a></li>
+                        <li><a class="page-number-item next-link" href="javascript:void(0);" >Next</a></li>
                     </ul>
                     <p class="result-count">Showing 1-8 of 12 result</p> --}}
                 </div>
@@ -119,17 +119,17 @@
                     <h2 class="widget-title">Brand</h2>
                     <div class="widget-content">
                         <ul class="list-style vertical-list list-limited" data-show="6">
-                            <li class="list-item"><a class="filter-link active" href="#">Fashion Clothings</a></li>
-                            <li class="list-item"><a class="filter-link " href="#">Laptop Batteries</a></li>
-                            <li class="list-item"><a class="filter-link " href="#">Printer & Ink</a></li>
-                            <li class="list-item"><a class="filter-link " href="#">CPUs & Prosecsors</a></li>
-                            <li class="list-item"><a class="filter-link " href="#">Sound & Speaker</a></li>
-                            <li class="list-item"><a class="filter-link " href="#">Shop Smartphone & Tablets</a></li>
-                            <li class="list-item default-hiden"><a class="filter-link " href="#">Printer & Ink</a></li>
-                            <li class="list-item default-hiden"><a class="filter-link " href="#">CPUs & Prosecsors</a></li>
-                            <li class="list-item default-hiden"><a class="filter-link " href="#">Sound & Speaker</a></li>
-                            <li class="list-item default-hiden"><a class="filter-link " href="#">Shop Smartphone & Tablets</a></li>
-                            <li class="list-item"><a data-label='Show less<i class="fa fa-angle-up" aria-hidden="true"></i>' class="btn-control control-show-more" href="#">Show more<i class="fa fa-angle-down" aria-hidden="true"></i></a></li>
+                            <li class="list-item"><a class="filter-link active" href="javascript:void(0);">Fashion Clothings</a></li>
+                            <li class="list-item"><a class="filter-link " href="javascript:void(0);">Laptop Batteries</a></li>
+                            <li class="list-item"><a class="filter-link " href="javascript:void(0);">Printer & Ink</a></li>
+                            <li class="list-item"><a class="filter-link " href="javascript:void(0);">CPUs & Prosecsors</a></li>
+                            <li class="list-item"><a class="filter-link " href="javascript:void(0);">Sound & Speaker</a></li>
+                            <li class="list-item"><a class="filter-link " href="javascript:void(0);">Shop Smartphone & Tablets</a></li>
+                            <li class="list-item default-hiden"><a class="filter-link " href="javascript:void(0);">Printer & Ink</a></li>
+                            <li class="list-item default-hiden"><a class="filter-link " href="javascript:void(0);">CPUs & Prosecsors</a></li>
+                            <li class="list-item default-hiden"><a class="filter-link " href="javascript:void(0);">Sound & Speaker</a></li>
+                            <li class="list-item default-hiden"><a class="filter-link " href="javascript:void(0);">Shop Smartphone & Tablets</a></li>
+                            <li class="list-item"><a data-label='Show less<i class="fa fa-angle-up" aria-hidden="true"></i>' class="btn-control control-show-more" href="javascript:void(0);">Show more<i class="fa fa-angle-down" aria-hidden="true"></i></a></li>
                         </ul>
                     </div>
                 </div><!-- brand widget-->
@@ -150,12 +150,12 @@
                     <h2 class="widget-title">Color</h2>
                     <div class="widget-content">
                         <ul class="list-style vertical-list has-count-index">
-                            <li class="list-item"><a class="filter-link " href="#">Red <span>(217)</span></a></li>
-                            <li class="list-item"><a class="filter-link " href="#">Yellow <span>(179)</span></a></li>
-                            <li class="list-item"><a class="filter-link " href="#">Black <span>(79)</span></a></li>
-                            <li class="list-item"><a class="filter-link " href="#">Blue <span>(283)</span></a></li>
-                            <li class="list-item"><a class="filter-link " href="#">Grey <span>(116)</span></a></li>
-                            <li class="list-item"><a class="filter-link " href="#">Pink <span>(29)</span></a></li>
+                            <li class="list-item"><a class="filter-link " href="javascript:void(0);">Red <span>(217)</span></a></li>
+                            <li class="list-item"><a class="filter-link " href="javascript:void(0);">Yellow <span>(179)</span></a></li>
+                            <li class="list-item"><a class="filter-link " href="javascript:void(0);">Black <span>(79)</span></a></li>
+                            <li class="list-item"><a class="filter-link " href="javascript:void(0);">Blue <span>(283)</span></a></li>
+                            <li class="list-item"><a class="filter-link " href="javascript:void(0);">Grey <span>(116)</span></a></li>
+                            <li class="list-item"><a class="filter-link " href="javascript:void(0);">Pink <span>(29)</span></a></li>
                         </ul>
                     </div>
                 </div><!-- Color -->
@@ -164,10 +164,10 @@
                     <h2 class="widget-title">Size</h2>
                     <div class="widget-content">
                         <ul class="list-style inline-round ">
-                            <li class="list-item"><a class="filter-link active" href="#">s</a></li>
-                            <li class="list-item"><a class="filter-link " href="#">M</a></li>
-                            <li class="list-item"><a class="filter-link " href="#">l</a></li>
-                            <li class="list-item"><a class="filter-link " href="#">xl</a></li>
+                            <li class="list-item"><a class="filter-link active" href="javascript:void(0);">s</a></li>
+                            <li class="list-item"><a class="filter-link " href="javascript:void(0);">M</a></li>
+                            <li class="list-item"><a class="filter-link " href="javascript:void(0);">l</a></li>
+                            <li class="list-item"><a class="filter-link " href="javascript:void(0);">xl</a></li>
                         </ul>
                         <div class="widget-banner">
                             <figure><img src="{{ asset('assets/images/size-banner-widget.jpg') }}" width="270" height="331" alt=""></figure>
@@ -187,7 +187,7 @@
                                         </a>
                                     </div>
                                     <div class="product-info">
-                                        <a href="#" class="product-name"><span>Radiant-360 R6 Wireless Omnidirectional Speaker...</span></a>
+                                        <a href="javascript:void(0);" class="product-name"><span>Radiant-360 R6 Wireless Omnidirectional Speaker...</span></a>
                                         <div class="wrap-price"><span class="product-price">$168.00</span></div>
                                     </div>
                                 </div>
@@ -201,7 +201,7 @@
                                         </a>
                                     </div>
                                     <div class="product-info">
-                                        <a href="#" class="product-name"><span>Radiant-360 R6 Wireless Omnidirectional Speaker...</span></a>
+                                        <a href="javascript:void(0);" class="product-name"><span>Radiant-360 R6 Wireless Omnidirectional Speaker...</span></a>
                                         <div class="wrap-price"><span class="product-price">$168.00</span></div>
                                     </div>
                                 </div>
@@ -215,7 +215,7 @@
                                         </a>
                                     </div>
                                     <div class="product-info">
-                                        <a href="#" class="product-name"><span>Radiant-360 R6 Wireless Omnidirectional Speaker...</span></a>
+                                        <a href="javascript:void(0);" class="product-name"><span>Radiant-360 R6 Wireless Omnidirectional Speaker...</span></a>
                                         <div class="wrap-price"><span class="product-price">$168.00</span></div>
                                     </div>
                                 </div>
@@ -229,7 +229,7 @@
                                         </a>
                                     </div>
                                     <div class="product-info">
-                                        <a href="#" class="product-name"><span>Radiant-360 R6 Wireless Omnidirectional Speaker...</span></a>
+                                        <a href="javascript:void(0);" class="product-name"><span>Radiant-360 R6 Wireless Omnidirectional Speaker...</span></a>
                                         <div class="wrap-price"><span class="product-price">$168.00</span></div>
                                     </div>
                                 </div>

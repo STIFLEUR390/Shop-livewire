@@ -62,14 +62,14 @@
                                     <i class="fa fa-star color-gray" aria-hidden="true"></i>
                                 @endif
                             @endfor
-                            <a href="#" class="count-review">({{ $product->orderItems->where('rstatus',1)->count() }} review)</a>
+                            <a href="javascript:void(0);" class="count-review">({{ $product->orderItems->where('rstatus',1)->count() }} review)</a>
                         </div>
                         <h2 class="product-name">{{ $product->name }}</h2>
                         <div class="short-desc">
                             {!! $product->short_description !!}
                         </div>
                         <div class="wrap-social">
-                            <a class="link-socail" href="#"><img src="{{ asset('assets/images/social-list.png') }}" alt=""></a>
+                            <a class="link-socail" href="javascript:void(0);"><img src="{{ asset('assets/images/social-list.png') }}" alt=""></a>
                         </div>
                         @if ($product->sale_price > 0 && $sale->status == 1 && $sale->sale_date > Carbon\Carbon::now() )
                             <div class="wrap-price">
@@ -87,19 +87,19 @@
                             <div class="quantity-input">
                                 <input type="text" wire:model="qty" name="product-quatity" value="1" data-max="120" pattern="[0-9]*" >
 
-                                <a class="btn btn-reduce" href="#" wire:click.prevent="decreaseQuantity"></a>
-                                <a class="btn btn-increase" href="#" wire:click.prevent="increaseQuantity"></a>
+                                <a class="btn btn-reduce" href="javascript:void(0);" wire:click.prevent="decreaseQuantity"></a>
+                                <a class="btn btn-increase" href="javascript:void(0);" wire:click.prevent="increaseQuantity"></a>
                             </div>
                         </div>
                         <div class="wrap-butons">
                             @if ($product->sale_price > 0 && $sale->status == 1 && $sale->sale_date > Carbon\Carbon::now())
-                            <a href="#" class="btn add-to-cart" wire:click.prevent="store({{$product->id}}, '{{ $product->name }}', {{ $product->sale_price }})">Add to Cart</a>
+                            <a href="javascript:void(0);" class="btn add-to-cart" wire:click.prevent="store({{$product->id}}, '{{ $product->name }}', {{ $product->sale_price }})">Add to Cart</a>
                             @else
-                                <a href="#" class="btn add-to-cart" wire:click.prevent="store({{$product->id}}, '{{ $product->name }}', {{ $product->regular_price }})">Add to Cart</a>
+                                <a href="javascript:void(0);" class="btn add-to-cart" wire:click.prevent="store({{$product->id}}, '{{ $product->name }}', {{ $product->regular_price }})">Add to Cart</a>
                             @endif
                             <div class="wrap-btn">
-                                <a href="#" class="btn btn-compare">Add Compare</a>
-                                <a href="#" class="btn btn-wishlist">Add Wishlist</a>
+                                <a href="javascript:void(0);" class="btn btn-compare">Add Compare</a>
+                                <a href="javascript:void(0);" class="btn btn-wishlist">Add Wishlist</a>
                             </div>
                         </div>
                     </div>
@@ -158,7 +158,7 @@
                                             @foreach ($product->orderItems->where('rstatus',1) as $orderItem)
                                                 <li class="comment byuser comment-author-admin bypostauthor even thread-even depth-1" id="li-comment-20">
                                                     <div id="comment-20" class="comment_container">
-                                                        <img src="{{ asset('assets/images/profile') }}/{{ $user->profile->image }}" height="80" width="80" />
+                                                        <img src="{{ asset('assets/images/profile') }}/{{ $orderItem->order->user->profile->image }}" height="80" width="80" />
                                                         <div class="comment-text">
                                                             <div class="star-rating">
                                                                 <span class="width-{{ $orderItem->review->rating * 20 }}-percent">Rated <strong class="rating">{{$orderItem->review->rating}}</strong> out of 5</span>
@@ -191,7 +191,7 @@
                         <ul class="our-services">
 
                             <li class="service">
-                                <a class="link-to-service" href="#">
+                                <a class="link-to-service" href="javascript:void(0);">
                                     <i class="fa fa-truck" aria-hidden="true"></i>
                                     <div class="right-content">
                                         <b class="title">Free Shipping</b>
@@ -202,7 +202,7 @@
                             </li>
 
                             <li class="service">
-                                <a class="link-to-service" href="#">
+                                <a class="link-to-service" href="javascript:void(0);">
                                     <i class="fa fa-gift" aria-hidden="true"></i>
                                     <div class="right-content">
                                         <b class="title">Special Offer</b>
@@ -213,7 +213,7 @@
                             </li>
 
                             <li class="service">
-                                <a class="link-to-service" href="#">
+                                <a class="link-to-service" href="javascript:void(0);">
                                     <i class="fa fa-reply" aria-hidden="true"></i>
                                     <div class="right-content">
                                         <b class="title">Order Return</b>
@@ -267,7 +267,7 @@
                                             <span class="flash-item new-label">new</span>
                                         </div>
                                         <div class="wrap-btn">
-                                            <a href="#" class="function-link">quick view</a>
+                                            <a href="javascript:void(0);" class="function-link">quick view</a>
                                         </div>
                                     </div>
                                     <div class="product-info">
