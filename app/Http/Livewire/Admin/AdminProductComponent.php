@@ -11,6 +11,7 @@ class AdminProductComponent extends Component
     use WithPagination;
 
     public $product_id;
+    public $search_product;
 
     protected $listeners = ['confirmed' => 'confirmed', 'cancelled' => 'cancelled'];
 
@@ -44,7 +45,13 @@ class AdminProductComponent extends Component
 
     public function render()
     {
-        $products = Product::paginate(10);
+        // $products = Product::paginate(10);
+        $search = "%". $this->search_product ."%";
+        $products = Product::where('name', 'LIKE', $search)
+                        ->orWhere('stock_status', 'LIKE', $search)
+                        ->orWhere('regular_price', 'LIKE', $search)
+                        ->orWhere('sale_price', 'LIKE', $search)
+                        ->orderBy('id', 'DESC')->paginate(10);
         return view('livewire.admin.admin-product-component', compact('products'))->layout('layouts.base');
     }
 
