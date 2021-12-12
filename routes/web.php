@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Livewire\{CartComponent, CategoryComponent, CheckoutComponent, ContactComponent, DetailComponent, HomeComponent, SearchComponent, ShopComponent, ThankyouComponent, WishlistComponent};
-use App\Http\Livewire\Admin\{AdminAddCategoryComponent, AdminAddCouponsComponent, AdminAddHomeSliderComponent, AdminAddProductComponent, AdminCategoryComponent, AdminContactComponent, AdminCouponsComponent, AdminDashboardComponent, AdminEditCategoryComponent, AdminEditCouponsComponent, AdminEditHomeSliderComponent, AdminEditProductComponent, AdminHomeCategoryComponent, AdminHomeSliderComponent, AdminOrderComponent, AdminOrderDetailsComponent, AdminProductComponent, AdminSaleComponent, AdminSettingComponent};
+use App\Http\Livewire\Admin\{AdminAddAttributeComponent, AdminAddCategoryComponent, AdminAddCouponsComponent, AdminAddHomeSliderComponent, AdminAddProductComponent, AdminAttributesComponent, AdminCategoryComponent, AdminContactComponent, AdminCouponsComponent, AdminDashboardComponent, AdminEditAttributeComponent, AdminEditCategoryComponent, AdminEditCouponsComponent, AdminEditHomeSliderComponent, AdminEditProductComponent, AdminHomeCategoryComponent, AdminHomeSliderComponent, AdminOrderComponent, AdminOrderDetailsComponent, AdminProductComponent, AdminSaleComponent, AdminSettingComponent};
 use App\Http\Livewire\User\{UserChangePasswordComponent, UserDashboardComponent, UserEditProfileComponent, UserOrderDetailsComponent, UserOrdersComponent, UserProfileComponent, UserReviewComponent};
 use Illuminate\Support\Facades\Route;
 
@@ -88,4 +88,8 @@ Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->group(function () 
     Route::get('/admin/contact-us', AdminContactComponent::class)->name('admin.contact');
 
     Route::get('/admin/settings', AdminSettingComponent::class)->name('admin.settings');
+
+    Route::get('admin/attributes', AdminAttributesComponent::class)->name('admin.attributes');
+    Route::get('admin/attribute/add', AdminAddAttributeComponent::class)->name('admin.add_attribute');
+    Route::get('admin/attribute/{attribute_id}/edit', AdminEditAttributeComponent::class)->name('admin.edit_attribute');
 });

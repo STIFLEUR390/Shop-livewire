@@ -83,6 +83,9 @@
                                                         <a title="Categories" href="{{ route('admin.categories') }}">Categories</a>
                                                     </li>
                                                     <li class="menu-item" >
+                                                        <a title="Attributes" href="{{ route('admin.attributes') }}">Attributes</a>
+                                                    </li>
+                                                    <li class="menu-item" >
                                                         <a title="Products" href="{{ route('admin.products') }}">Tout les Produits</a>
                                                     </li>
                                                     <li class="menu-item" >
@@ -92,7 +95,7 @@
                                                         <a title="Manage Home Catgories" href="{{ route('admin.homecategories') }}">Gérer les catégories d'accueil</a>
                                                     </li>
                                                     <li class="menu-item" >
-                                                        <a title="Sale Setting" href="{{ route('admin.sale') }}">Sale Setting</a>
+                                                        <a title="Sale Setting" href="{{ route('admin.sale') }}">Paramètre de vente</a>
                                                     </li>
                                                     <li class="menu-item" >
                                                         <a title="All Coupon" href="{{ route('admin.coupons') }}">Tous les coupons</a>
