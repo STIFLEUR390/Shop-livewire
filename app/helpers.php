@@ -5,26 +5,11 @@ if (!function_exists('priceFormat')) {
     // /*
     function priceFormat($number)
     {
-        $fmt = new NumberFormatter( 'fr_FR', NumberFormatter::CURRENCY );
-        return $fmt->formatCurrency($number, "XAF");
+        // $fmt = new NumberFormatter( 'fr_FR', NumberFormatter::CURRENCY );
+        // return $fmt->formatCurrency($number, "XAF");
+        $locale = config('app.devise.locale');
+        $devise = config('app.devise.devise');
+        $fmt = new NumberFormatter( $locale, NumberFormatter::CURRENCY );
+        return $fmt->formatCurrency($number, $devise);
     }
-    // */
-
-    # dollar americain
-    /*
-    function priceFormat($number)
-    {
-        $fmt = new NumberFormatter( 'en_US', NumberFormatter::CURRENCY );
-        return $fmt->formatCurrency($number, "USD");
-    }
-    */
-
-    # ero
-    /*
-    function priceFormat($number)
-    {
-        $fmt = new NumberFormatter( 'fr_FR', NumberFormatter::CURRENCY );
-        return $fmt->formatCurrency($number, "EUR");
-    }
-    */
 }

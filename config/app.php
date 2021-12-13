@@ -240,4 +240,15 @@ return [
 
     ],
 
+    // curent devise
+    'devise' => [
+        'locale' => 'fr_FR',
+        'devise' => 'XAF'
+    ],
+
+    'fallback_devise' => [
+        'locale' => 'fr_FR',
+        'devise' => 'XAF'
+    ],
+
 ];

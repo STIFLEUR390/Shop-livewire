@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\DeviseController;
+use App\Http\Controllers\LanguageController;
 use App\Http\Livewire\{CartComponent, CategoryComponent, CheckoutComponent, ContactComponent, DetailComponent, HomeComponent, SearchComponent, ShopComponent, ThankyouComponent, WishlistComponent};
 use App\Http\Livewire\Admin\{AdminAddAttributeComponent, AdminAddCategoryComponent, AdminAddCouponsComponent, AdminAddHomeSliderComponent, AdminAddProductComponent, AdminAttributesComponent, AdminCategoryComponent, AdminContactComponent, AdminCouponsComponent, AdminDashboardComponent, AdminEditAttributeComponent, AdminEditCategoryComponent, AdminEditCouponsComponent, AdminEditHomeSliderComponent, AdminEditProductComponent, AdminHomeCategoryComponent, AdminHomeSliderComponent, AdminOrderComponent, AdminOrderDetailsComponent, AdminProductComponent, AdminSaleComponent, AdminSettingComponent};
 use App\Http\Livewire\User\{UserChangePasswordComponent, UserDashboardComponent, UserEditProfileComponent, UserOrderDetailsComponent, UserOrdersComponent, UserProfileComponent, UserReviewComponent};
@@ -17,6 +19,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', HomeComponent::class);
+
+Route::get('lang/{lang}', [LanguageController::class, 'swithLang'])->name('lang.switch');
+Route::get('devise/{devise}', [DeviseController::class, 'swithDevise'])->name('devise.switch');
 
 Route::get('/shop', ShopComponent::class);
 

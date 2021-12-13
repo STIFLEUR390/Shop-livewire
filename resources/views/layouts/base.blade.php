@@ -18,6 +18,7 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/color-01.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('js/select2/css/select2.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('js/date-timepicker/css/bootstrap-datetimepicker.min.css') }}">
+    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/4.1.5/css/flag-icons.min.css" integrity="sha512-UwbBNAFoECXUPeDhlKR3zzWU3j8ddKIQQsDOsKhXQGdiB5i3IHEXr9kXx82+gaHigbNKbTDp3VY/G6gZqva6ZQ==" crossorigin="anonymous" referrerpolicy="no-referrer" /> --}}
     {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" integrity="sha512-aEe/ZxePawj0+G2R+AaIxgrQuKT68I28qh+wgLrcAJOz3rxCP+TwrK5SPN+E5I+1IQjNtcfvb96HDagwrKRdBw==" crossorigin="anonymous" referrerpolicy="no-referrer" /> --}}
     <link rel="stylesheet" type="text/css" href="{{ asset('js/nouislider/css/nouislider.min.css') }}">
     @livewireStyles
@@ -48,18 +49,26 @@
 						<div class="topbar-menu right-menu">
 							<ul>
 								<li class="menu-item lang-menu menu-item-has-children parent">
-									<a title="English" href="javascript:void(0);"><span class="img label-before"><img src="{{ asset('assets/images/lang-en.png') }}" alt="lang-en"></span>English<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+									<a title="{{ Config::get('languages')[App::getLocale()]['display'] }}" href="javascript:void(0);"><span class="img label-before"><span class="flag-icon flag-icon-{{ Config::get('languages')[App::getLocale()]['flag-icon'] }}"></span></span>{{ Config::get('languages')[App::getLocale()]['display'] }}<i class="fa fa-angle-down" aria-hidden="true"></i></a>
 									<ul class="submenu lang" >
-										<li class="menu-item" ><a title="hungary" href="javascript:void(0);"><span class="img label-before"><img src="{{ asset('assets/images/lang-hun.png') }}" alt="lang-hun"></span>Hungary</a></li>
-										<li class="menu-item" ><a title="german" href="javascript:void(0);"><span class="img label-before"><img src="{{ asset('assets/images/lang-ger.png') }}" alt="lang-ger" ></span>German</a></li>
-										<li class="menu-item" ><a title="french" href="javascript:void(0);"><span class="img label-before"><img src="{{ asset('assets/images/lang-fra.png') }}" alt="lang-fre"></span>French</a></li>
-										<li class="menu-item" ><a title="canada" href="javascript:void(0);"><span class="img label-before"><img src="{{ asset('assets/images/lang-can.png') }}" alt="lang-can"></span>Canada</a></li>
+                                        @foreach (Config::get('languages') as $lang => $language)
+                                            @if ($lang != App::getLocale())
+                                                <li class="menu-item" ><a title="hungary" href="{{ route('lang.switch', $lang) }}"><span class="img label-before"><span class="flag-icon flag-icon-{{ $language['flag-icon'] }}"></span></span>{{ $language['display'] }}</a></li>
+                                            @endif
+                                        @endforeach
 									</ul>
 								</li>
 								<li class="menu-item menu-item-has-children parent" >
-									<a title="Dollar (USD)" href="javascript:void(0);">Dollar (USD)<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+									<a title="{{ Config::get('app.devise.devise') }}" href="javascript:void(0);">{{ Config::get('app.devise.devise') }}<i class="fa fa-angle-down" aria-hidden="true"></i></a>
 									<ul class="submenu curency" >
-										<li class="menu-item" >
+                                        @foreach (Config::get('devises') as $name => $devise)
+                                            @if ($devise['devise'] != Config::get('app.devise.devise'))
+                                                <li class="menu-item" >
+                                                    <a title="{{ $devise['devise'] }}" href="{{ route('devise.switch', $name) }}">{{ $devise['devise'] }}</a>
+                                                </li>
+                                            @endif
+                                        @endforeach
+										{{-- <li class="menu-item" >
 											<a title="Pound (GBP)" href="javascript:void(0);">Pound (GBP)</a>
 										</li>
 										<li class="menu-item" >
@@ -67,7 +76,7 @@
 										</li>
 										<li class="menu-item" >
 											<a title="Dollar (USD)" href="javascript:void(0);">Dollar (USD)</a>
-										</li>
+										</li> --}}
 									</ul>
 								</li>
                                 @if (Route::has('login'))
@@ -83,7 +92,7 @@
                                                         <a title="Categories" href="{{ route('admin.categories') }}">Categories</a>
                                                     </li>
                                                     <li class="menu-item" >
-                                                        <a title="Attributes" href="{{ route('admin.attributes') }}">Attributes</a>
+                                                        <a title="Attributes" href="{{ route('admin.attributes') }}">Attributs</a>
                                                     </li>
                                                     <li class="menu-item" >
                                                         <a title="Products" href="{{ route('admin.products') }}">Tout les Produits</a>
@@ -230,6 +239,7 @@
               Swal.fire(e.detail);
           });
     </script>
+    <script src="{{ asset('js/app.js') }}"></script>
 	<script src="{{ asset('assets/js/jquery-1.12.4.minb8ff.js?ver=1.12.4') }}"></script>
 	<script src="{{ asset('assets/js/jquery-ui-1.12.4.minb8ff.js?ver=1.12.4') }}"></script>
 	<script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
