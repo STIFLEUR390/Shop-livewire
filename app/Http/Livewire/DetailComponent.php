@@ -11,10 +11,11 @@ class DetailComponent extends Component
 {
     public $slug;
     public $qty;
+    public $satt = [];
 
     public function store($product_id, $product_name, $product_price)
     {
-        Cart::instance('cart')->add($product_id, $product_name, $this->qty, $product_price)->associate('App\Models\Product');
+        Cart::instance('cart')->add($product_id, $product_name, $this->qty, $product_price, $this->satt)->associate('App\Models\Product');
         alert()->success('Success','Le produit a été ajouter au panier');
         return redirect()->route('product.cart');
     }

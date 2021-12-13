@@ -82,6 +82,24 @@
                         <div class="stock-info in-stock">
                             <p class="availability">Disponibilité: <b>{{ $product->stock_status }}</b></p>
                         </div>
+
+                        <div>
+                            @foreach ($product->attributeValues->unique('product_attribute_id') as $av)
+                                <div class="row" style="margin-top: 20px;">
+                                    <div class="col-xs-2">
+                                        <p>{{ $av->productAttribute->name }}</p>
+                                    </div>
+                                    <div class="col-xs-10">
+                                        <select class="form-control" style="width: 200px;" wire:model='satt.{{ $av->productAttribute->name }}'>
+                                            @foreach ($av->productAttribute->attributeValues->where('product_id', $product->id) as $pav)
+                                                <option value="{{ $pav->value }}">{{ $pav->value }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+
                         <div class="quantity">
                             <span>Quantity:</span>
                             <div class="quantity-input">

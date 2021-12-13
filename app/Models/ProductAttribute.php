@@ -10,4 +10,10 @@ class ProductAttribute extends Model
     use HasFactory;
 
     protected $table = "product_attributes";
+
+    public function attributeValues()
+    {
+        return $this->hasMany(AttributeValue::class, 'product_attribute_id');
+        // return $this->hasMany(AttributeValue::class);
+    }
 }
