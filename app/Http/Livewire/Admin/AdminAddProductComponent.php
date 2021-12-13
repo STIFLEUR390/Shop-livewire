@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\Admin;
 
-use App\Models\{Category, Product, Subcategory};
+use App\Models\{Attributevalue, Category, Product, ProductAttribute, Subcategory};
 use Carbon\Carbon;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -26,6 +26,11 @@ class AdminAddProductComponent extends Component
     public $category_id;
     public $images;
     public $sub_category_id;
+
+    public $attr;
+    public $inputs = [];
+    public $attribute_arr = [];
+    public $attribute_values = [];
 
     protected $rules = [
         'name' => 'required',
@@ -58,6 +63,19 @@ class AdminAddProductComponent extends Component
     {
         $this->stock_status = 'instock';
         $this->featured = 0;
+    }
+
+    public function remove($attr)
+    {
+        unset($this->inputs[$attr]);
+    }
+
+    public function add()
+    {
+        if (!in_array($this->attr, $this->attribute_arr)) {
+            array_push($this->inputs, $this->attr);
+            array_push($this->attribute_arr, $this->attr);
+        }
     }
 
     public function generateSlug()
@@ -108,6 +126,17 @@ class AdminAddProductComponent extends Component
         }
         $product->save();
 
+        foreach ($this->attribute_values as $key => $attribute_value) {
+            $avalues = explode(",", $attribute_value);
+            foreach ($avalues as $avalue) {
+                $attr_value = new Attributevalue();
+                $attr_value->product_attribute_id = $key;
+                $attr_value->value = $avalue;
+                $attr_value->product_id = $product->id;
+                $attr_value->save();
+            }
+        }
+
         // session()->flash('message', 'Le produit a été avec succes');
         $this->alert('success', 'Le produit a été avec succès', [
             'position' =>  'center',
@@ -130,6 +159,8 @@ class AdminAddProductComponent extends Component
     {
         $categories = Category::all();
         $sub_categories = Subcategory::where('category_id', $this->category_id)->get();
-        return view('livewire.admin.admin-add-product-component', compact('categories', 'sub_categories'))->layout('layouts.base');
+
+        $product_attributes = ProductAttribute::all();
+        return view('livewire.admin.admin-add-product-component', compact('categories', 'sub_categories', 'product_attributes'))->layout('layouts.base');
     }
 }

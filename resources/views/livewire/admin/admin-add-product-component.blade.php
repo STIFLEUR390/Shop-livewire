@@ -155,6 +155,33 @@
                             </div>
 
                             <div class="form-group">
+                                <label class="col-md-4 control-label">Product Attributes</label>
+                                <div class="col-md-3">
+                                    <select class="form-control" wire:model="attr">
+                                        <option value="">Select Attribute</option>
+                                        @foreach ($product_attributes as $product_attribute)
+                                            <option value="{{ $product_attribute->id }}">{{ $product_attribute->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-md-1">
+                                    <button type="button" wire:click.prevent='add' class="btn btn-info">Add</button>
+                                </div>
+                            </div>
+
+                            @foreach ($inputs as $key => $value)
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">{{ $product_attributes->where('id', $attribute_arr[$key])->first()->name }}</label>
+                                    <div class="col-md-3">
+                                        <input type="text" placeholder="{{ $product_attributes->where('id', $attribute_arr[$key])->first()->name }}" class="form-control input-md" wire:model="attribute_values.{{ $value }}" />
+                                    </div>
+                                    <div class="col-md-1">
+                                        <button type="button" wire:click.prevent='remove({{$key}})' class="btn btn-danger btn-sm">Remove</button>
+                                    </div>
+                                </div>
+                            @endforeach
+
+                            <div class="form-group">
                                 <label class="col-md-4 control-label"></label>
                                 <div class="col-md-4">
                                     <button type="submit" class="btn btn-primary">Créer</button>

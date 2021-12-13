@@ -4,7 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Mail\OrderMail;
 use App\Models\{Order, OrderItem, Shipping, Transaction};
-use Illuminate\Support\Facades\{Auth, Mail};
+use Illuminate\Support\Facades\{Auth, Config, Mail};
 use Livewire\Component;
 use Cart;
 use Exception;
@@ -222,7 +222,8 @@ class CheckoutComponent extends Component
 
                 $charge = $stripe->charges()->create([
                     'customer' => $customer['id'],
-                    'currency' => 'XAF',
+                    // 'currency' => 'XAF',
+                    'currency' => Config::get('app.devise.devise'),
                     'amount' => intval(session()->get('checkout')['total']),
                     'description' => 'Paiement de la commande No ' . $order->id
                 ]);
