@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\Admin;
 
-use App\Models\{Attributevalue, Category, Product, ProductAttribute, Subcategory};
+use App\Models\{AttributeValue, Category, Product, ProductAttribute, Subcategory};
 use Carbon\Carbon;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -129,7 +129,7 @@ class AdminAddProductComponent extends Component
         foreach ($this->attribute_values as $key => $attribute_value) {
             $avalues = explode(",", $attribute_value);
             foreach ($avalues as $avalue) {
-                $attr_value = new Attributevalue();
+                $attr_value = new AttributeValue();
                 $attr_value->product_attribute_id = $key;
                 $attr_value->value = $avalue;
                 $attr_value->product_id = $product->id;

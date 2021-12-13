@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\Admin;
 
-use App\Models\{Category, Product, Subcategory};
+use App\Models\{AttributeValue, Category, Product, ProductAttribute, Subcategory};
 use Carbon\Carbon;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -30,6 +30,11 @@ class AdminEditProductComponent extends Component
     public $images;
     public $newimages;
     public $sub_category_id;
+
+    public $attr;
+    public $inputs = [];
+    public $attribute_arr = [];
+    public $attribute_values = [];
 
 
     protected function rules()
@@ -70,6 +75,30 @@ class AdminEditProductComponent extends Component
         $this->category_id = $product->category_id;
         $this->sub_category_id = $product->subcategory_id;
         $this->product_id = $product->id;
+        $this->inputs = $product->attributeValues->where('product_id', $product->id)->unique('product_attribute_id')->pluck('product_attribute_id');
+        $this->attribute_arr = $product->attributeValues->where('product_id', $product->id)->unique('product_attribute_id')->pluck('product_attribute_id');
+
+        foreach ($this->attribute_arr as $a_arr) {
+            $allAttributevalue = AttributeValue::where('product_id', $product->id)->where('product_attribute_id', $a_arr)->get()->pluck('value');
+            $valueString = '';
+            foreach ($allAttributevalue as $value) {
+                $valueString = $valueString.$value.',';
+            }
+            $this->attribute_values[$a_arr] = rtrim($valueString, ',');
+        }
+    }
+
+    public function remove($attr)
+    {
+        unset($this->inputs[$attr]);
+    }
+
+    public function add()
+    {
+        if (!$this->attribute_arr->contains($this->attr)) {
+            $this->inputs->push($this->attr);
+            $this->attribute_arr->push($this->attr);
+        }
     }
 
     public function generateSlug()
@@ -127,6 +156,18 @@ class AdminEditProductComponent extends Component
         }
         $product->save();
 
+        AttributeValue::where('product_id', $product->id)->delete();
+        foreach ($this->attribute_values as $key => $attribute_value) {
+            $avalues = explode(",", $attribute_value);
+            foreach ($avalues as $avalue) {
+                $attr_value = new AttributeValue();
+                $attr_value->product_attribute_id = $key;
+                $attr_value->value = $avalue;
+                $attr_value->product_id = $product->id;
+                $attr_value->save();
+            }
+        }
+
         // session()->flash('message', 'Le produit a été mise a jour avec succes');
         $this->dispatchBrowserEvent('swal', [
             'title' => 'Le produit a été mise a jour avec succès',
@@ -147,6 +188,8 @@ class AdminEditProductComponent extends Component
     {
         $categories = Category::all();
         $sub_categories = Subcategory::where('category_id', $this->category_id)->get();
-        return view('livewire.admin.admin-edit-product-component', compact('categories', 'sub_categories'))->layout('layouts.base');
+
+        $product_attributes = ProductAttribute::all();
+        return view('livewire.admin.admin-edit-product-component', compact('product_attributes' ,'categories', 'sub_categories'))->layout('layouts.base');
     }
 }
